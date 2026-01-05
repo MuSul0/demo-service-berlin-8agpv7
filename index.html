@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Berlin - Existenzgründungshilfen für Handwerksmeister/innen</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --primary-dark: #0f1f3a;
+            --accent: #d4a853;
+            --accent-light: #e6c78a;
+            --background: #ffffff;
+            --background-light: #f8fafc;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --border-radius: 12px;
+            --border-radius-lg: 24px;
+            --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --box-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--background);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--background);
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            padding: 10px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            color: var(--background);
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link.active {
+            background-color: var(--primary);
+            color: var(--background);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger input {
+            display: none;
+        }
+
+        .hamburger-label {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 20px;
+            width: 30px;
+            cursor: pointer;
+        }
+
+        .hamburger-label span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--text);
+            transition: var(--transition);
+        }
+
+        .hamburger input:checked ~ .hamburger-label span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger input:checked ~ .hamburger-label span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger input:checked ~ .hamburger-label span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 168, 83, 0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--background);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero-buttons .btn {
+            color: var(--primary);
+        }
+
+        .hero-buttons .btn-primary {
+            background-color: var(--background);
+            color: var(--primary);
+        }
+
+        .hero-buttons .btn-secondary {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .badge-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        /* About */
+        .about {
+            background-color: var(--background-light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--box-shadow-lg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            background-color: var(--background);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-lg);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-light);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--background);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+            box-shadow: var(--box-shadow-lg);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--accent-light);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        /* Process */
+        .process-timeline {
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--accent);
+        }
+
+        .process-item {
+            display: flex;
+            margin-bottom: 40px;
+        }
+
+        .process-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .process-item:nth-child(even) .process-content {
+            padding-left: 0;
+            padding-right: 40px;
+        }
+
+        .process-number {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary);
+            color: var(--background);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-content {
+            padding: 20px 40px;
+            background-color: var(--background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .process-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-light);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background-color: var(--background);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-lg);
+        }
+
+        .team-image {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+
+        .team-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .team-name {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .team-position {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .team-bio {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .social-link {
+            width: 35px;
+            height: 35px;
+            background-color: var(--accent-light);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            color: var(--background);
+            transform: translateY(-3px);
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background-color: var(--background);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--accent);
+        }
+
+        .pricing-card.popular::before {
+            content: 'Beliebtestes Paket';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-lg);
+        }
+
+        .pricing-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--accent-light);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .pricing-period {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-feature {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--background-light);
+        }
+
+        .pricing-feature:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-feature i {
+            color: var(--accent);
+            margin-right: 10px;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            height: 200px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--background);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--accent-light);
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+
+        .rating {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background-color: var(--background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 15px;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px;
+            text-align: left;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 200px;
+        }
+
+        .faq-icon {
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Contact */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-form {
+            background-color: var(--background);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-info {
+            background-color: var(--background);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .info-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-light);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .map-placeholder {
+            height: 300px;
+            background-color: #e5e7eb;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-light);
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-banner h2 {
+            color: var(--background);
+            margin-bottom: 20px;
+        }
+
+        .cta-banner .btn {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary);
+            color: var(--background);
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--background);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--background);
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--background);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--background);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                clip-path: circle(0px at 90% -10%);
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                clip-path: circle(1000px at 90% -10%);
+            }
+
+            .nav-item {
+                margin: 10px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .process-item:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .process-item:nth-child(even) .process-content {
+                padding-left: 40px;
+                padding-right: 0;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .trust-badges {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .process-timeline::before {
+                left: 30px;
+            }
+
+            .process-item {
+                flex-direction: column;
+            }
+
+            .process-item:nth-child(even) .process-content {
+                padding-left: 40px;
+                padding-right: 0;
+            }
+
+            .process-number {
+                margin-left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hammer"></i>
+                </div>
+                <span class="logo-text">Service Berlin</span>
+            </a>
+            <nav>
+                <input type="checkbox" id="hamburger" class="hamburger">
+                <label for="hamburger" class="hamburger-label">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Start</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Leistungen</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">Über uns</a></li>
+                    <li class="nav-item"><a href="#team" class="nav-link">Team</a></li>
+                    <li class="nav-item"><a href="#pricing" class="nav-link">Preise</a></li>
+                    <li class="nav-item"><a href="#gallery" class="nav-link">Galerie</a></li>
+                    <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Kontakt</a></li>
+                    <li class="nav-item"><a href="#contact" class="btn btn-primary">Termin/Anfrage</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <h1>Willkommen bei Service Berlin</h1>
+                <p>Ihre Experten für Existenzgründungshilfen im Handwerk. Wir unterstützen Handwerksmeister/innen auf dem Weg in die Selbstständigkeit mit maßgeschneiderten Lösungen und langjähriger Erfahrung.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Kostenlose Beratung</a>
+                    <a href="#services" class="btn btn-secondary">Unsere Leistungen</a>
+                </div>
+                <div class="trust-badges">
+                    <div class="badge">
+                        <div class="badge-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <span>15+ Jahre Erfahrung</span>
+                    </div>
+                    <div class="badge">
+                        <div class="badge-icon"><i class="fas fa-users"></i></div>
+                        <span>300+ Zufriedene Kunden</span>
+                    </div>
+                    <div class="badge">
+                        <div class="badge-icon"><i class="fas fa-star"></i></div>
+                        <span>4.9/5 Bewertung</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2>Über uns</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Ihre Partner für den Erfolg im Handwerk</h3>
+                        <p>Service Berlin ist Ihr zuverlässiger Partner für Existenzgründungshilfen im Handwerk. Seit über 15 Jahren unterstützen wir Handwerksmeister/innen dabei, ihren Traum von der Selbstständigkeit zu verwirklichen.</p>
+                        <p>Unser Team aus erfahrenen Beratern und Handwerksexperten bietet Ihnen maßgeschneiderte Lösungen für alle Herausforderungen der Existenzgründung - von der Businessplan-Erstellung bis zur Finanzierungsberatung.</p>
+                        <div class="values-grid">
+                            <div class="value-card">
+                                <div class="value-icon"><i class="fas fa-check-double"></i></div>
+                                <h4>Qualität</h4>
+                                <p>Hohe Standards in jeder Beratung und Umsetzung.</p>
+                            </div>
+                            <div class="value-card">
+                                <div class="value-icon"><i class="fas fa-clock"></i></div>
+                                <h4>Zuverlässigkeit</h4>
+                                <p>Termintreue und verlässliche Partnerschaft.</p>
+                            </div>
+                            <div class="value-card">
+                                <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+                                <h4>Innovation</h4>
+                                <p>Moderne Lösungen für Ihr Handwerksunternehmen.</p>
+                            </div>
+                            <div class="value-card">
+                                <div class="value-icon"><i class="fas fa-smile"></i></div>
+                                <h4>Kundenzufriedenheit</h4>
+                                <p>Ihr Erfolg ist unser oberstes Ziel.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://picsum.photos/600/400?random=1" alt="Service Berlin Team">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-banner">
+            <div class="container">
+                <h2>Bereit für den nächsten Schritt?</h2>
+                <p>Vereinbaren Sie jetzt einen unverbindlichen Beratungstermin mit unseren Experten.</p>
+                <a href="#contact" class="btn btn-secondary">Jetzt Termin vereinbaren</a>
+            </div>
+        </div>
+
+        <section id="services">
+            <div class="container">
+                <h2>Unsere Leistungen</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>Businessplan-Erstellung</h3>
+                        <p>Professionelle Erstellung Ihres Businessplans für Banken und Fördermittelgeber.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-euro-sign"></i></div>
+                        <h3>Finanzierungsberatung</h3>
+                        <p>Individuelle Beratung zu Fördermitteln, Krediten und Zuschüssen für Handwerker.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-gavel"></i></div>
+                        <h3>Rechtliche Beratung</h3>
+                        <p>Unterstützung bei Gewerbeanmeldung, Versicherungen und Verträgen.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Marktanalyse</h3>
+                        <p>Umfassende Markt- und Wettbewerbsanalysen für Ihr Handwerksunternehmen.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-calculator"></i></div>
+                        <h3>Kostenplanung</h3>
+                        <p>Detaillierte Kalkulation von Investitions- und Betriebskosten.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-users-cog"></i></div>
+                        <h3>Personalplanung</h3>
+                        <p>Beratung zu Personalbedarf, Einstellung und Ausbildung im Handwerk.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process">
+            <div class="container">
+                <h2>Unser Prozess</h2>
+                <div class="process-timeline">
+                    <div class="process-item">
+                        <div class="process-number">1</div>
+                        <div class="process-content">
+                            <div class="process-icon"><i class="fas fa-handshake"></i></div>
+                            <h3>Erstgespräch & Beratung</h3>
+                            <p>In einem kostenlosen Erstgespräch analysieren wir Ihre Situation und Ziele, um die besten Lösungen für Ihre Existenzgründung zu finden.</p>
+                        </div>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-number">2</div>
+                        <div class="process-content">
+                            <div class="process-icon"><i class="fas fa-lightbulb"></i></div>
+                            <h3>Konzept & Planung</h3>
+                            <p>Wir entwickeln gemeinsam mit Ihnen ein maßgeschneidertes Konzept und erstellen einen detaillierten Businessplan für Ihr Handwerksunternehmen.</p>
+                        </div>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-number">3</div>
+                        <div class="process-content">
+                            <div class="process-icon"><i class="fas fa-rocket"></i></div>
+                            <h3>Umsetzung</h3>
+                            <p>Unser Team unterstützt Sie bei der Umsetzung aller notwendigen Schritte - von der Finanzierung bis zur offiziellen Gründung.</p>
+                        </div>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-number">4</div>
+                        <div class="process-content">
+                            <div class="process-icon"><i class="fas fa-heart"></i></div>
+                            <h3>Nachbetreuung</h3>
+                            <p>Auch nach der Gründung stehen wir Ihnen mit Rat und Tat zur Seite, um den langfristigen Erfolg Ihres Unternehmens zu sichern.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team">
+            <div class="container">
+                <h2>Unser Team</h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://picsum.photos/300/400?random=2" alt="Michael Bauer">
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Michael Bauer</h3>
+                            <p class="team-position">Gründungsberater</p>
+                            <p class="team-bio">Mit über 20 Jahren Erfahrung im Handwerk unterstützt Michael Sie bei allen Fragen zur Existenzgründung.</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-xing"></i></a>
+                                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://picsum.photos/300/400?random=3" alt="Sarah Müller">
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Sarah Müller</h3>
+                            <p class="team-position">Finanzierungsexpertin</p>
+                            <p class="team-bio">Sarah kennt alle Förderprogramme und hilft Ihnen, die optimale Finanzierung für Ihr Vorhaben zu finden.</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-xing"></i></a>
+                                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://picsum.photos/300/400?random=4" alt="Thomas Schmidt">
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Thomas Schmidt</h3>
+                            <p class="team-position">Rechtsexperte</p>
+                            <p class="team-bio">Thomas sorgt dafür, dass alle rechtlichen Aspekte Ihrer Gründung korrekt und sicher umgesetzt werden.</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-xing"></i></a>
+                                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://picsum.photos/300/400?random=5" alt="Julia Weber">
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Julia Weber</h3>
+                            <p class="team-position">Marketing-Spezialistin</p>
+                            <p class="team-bio">Julia hilft Ihnen, Ihr Handwerksunternehmen erfolgreich am Markt zu positionieren und Kunden zu gewinnen.</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-xing"></i></a>
+                                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing">
+            <div class="container">
+                <h2>Unsere Preise</h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-icon"><i class="fas fa-paper-plane"></i></div>
+                        <h3>Starter-Paket</h3>
+                        <p class="pricing-period">Einmalige Beratung</p>
+                        <div class="pricing-price">€ 299<span class="pricing-period">/Sitzung</span></div>
+                        <ul class="pricing-features">
+                            <li class="pricing-feature"><i class="fas fa-check"></i> 2-stündige Beratung</li>
+                            <li class="pricing-feature"><i class="fas fa-check"></i> Analyse Ihrer Situation</li>
+                            <li class="pricing-feature"><i class="fas fa-check"></i> Erste Handlungsempfehlungen</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline">Jetzt buchen</a>
+                    </div>
+                    <div class="pricing-card popular">
+                        <div class="pricing-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Gründungs-Paket</h3>
+                        <p class="pricing-period">Komplettlösung</p>
+                        <div class="pricing-price">€ 1.999<span class="pricing-period">/pauschal</span></div>
+                        <ul class="pricing-features">
+                            <li class="pricing-feature"><i class="fas fa-check"></i> Businessplan-Erstellung</li>
+                            <li class="pricing-feature"><i class="fas fa-check"></i> Finanzierungsberatung</li>
+                            <li class="pricing-feature"><i class="fas fa-check"></i> Rechtliche Unterstützung</li>
+                            <li class="pricing-feature"><i class="fas fa-check"></i> Marktanalyse</li>
+                            <li class="pricing-feature"><i class="fas fa-check"></i> 3 Monate Nachbetreuung</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">Jetzt buchen</a>
+                    </div>
+                    <div class="pricing-card">
+                        <div class="pricing-icon"><i class="fas fa-star"></i></div>
+                        <h3>Premium-Paket</h3>
+                        <p class="pricing-period">Individuelle Betreuung</p>
+                        <div class="pricing-price">€ 4.999<span class="pricing-period">/pauschal</span></div>
+                        <ul class="pricing-features">
+                            <li class="pricing-feature"><i class="fas fa-check"></i> Alle Leistungen des Gründungs-Pakets</li>
+                            <li class="pricing-feature"><i class="fas fa-check"></i> Individuelles Marketingkonzept</li>
+                            <li class="pricing-feature"><i class="fas fa-check"></i> Personalplanung</li>
+                            <li class="pricing-feature"><i class="fas fa-check"></i> 12 Monate Nachbetreuung</li>
+                            <li class="pricing-feature"><i class="fas fa-check"></i> Priorisierte Bearbeitung</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline">Jetzt buchen</a>
+                    </div>
+                </div>
+                <div class="cta-banner" style="margin-top: 40px;">
+                    <div class="container">
+                        <h2>Individuelle Beratung gewünscht?</h2>
+                        <p>Vereinbaren Sie jetzt einen kostenlosen Beratungstermin mit unseren Experten.</p>
+                        <a href="#contact" class="btn btn-secondary">Kostenlose Beratung</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <h2>Galerie</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/400/300?random=6" alt="Handwerk 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/400/300?random=7" alt="Handwerk 2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/400/300?random=8" alt="Handwerk 3">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/400/300?random=9" alt="Handwerk 4">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/400/300?random=10" alt="Handwerk 5">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/400/300?random=11" alt="Handwerk 6">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <h2>Kundenstimmen</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-content">Dank Service Berlin habe ich meinen Traum von der eigenen Schreinerei verwirklichen können. Die Beratung war professionell und hat mir sehr geholfen!</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="https://picsum.photos/80/80?random=12" alt="Maximilian Wagner">
+                            </div>
+                            <div class="author-info">
+                                <h4>Maximilian Wagner</h4>
+                                <p>Schreinermeister</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-content">Die Finanzierungsberatung war Gold wert! Ohne Service Berlin hätte ich nie so günstige Kredite für meine Elektrofirma bekommen.</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="https://picsum.photos/80/80?random=13" alt="Anna Schmidt">
+                            </div>
+                            <div class="author-info">
+                                <h4>Anna Schmidt</h4>
+                                <p>Elektromeisterin</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-content">Von der ersten Beratung bis zur Eröffnung meines Sanitärbetriebs - alles perfekt organisiert und begleitet. Absolut empfehlenswert!</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="https://picsum.photos/80/80?random=14" alt="Markus Bauer">
+                            </div>
+                            <div class="author-info">
+                                <h4>Markus Bauer</h4>
+                                <p>Sanitärmeister</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-content">Die Marktanalyse hat mir geholfen, meine Zielgruppe viel besser zu verstehen. Mein Malereibetrieb läuft seit der Gründung hervorragend.</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="https://picsum.photos/80/80?random=15" alt="Julia Weber">
+                            </div>
+                            <div class="author-info">
+                                <h4>Julia Weber</h4>
+                                <p>Malermesterin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="container">
+                <h2>Häufige Fragen</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Welche Voraussetzungen brauche ich für eine Existenzgründung im Handwerk?
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Für eine Existenzgründung im Handwerk benötigen Sie in der Regel einen Meisterbrief oder eine vergleichbare Qualifikation. Ausnahmen gelten für einige zulassungsfreie Handwerke. Wir beraten Sie gerne zu den genauen Anforderungen für Ihr Gewerk.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Wie lange dauert der Gründungsprozess?
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Die Dauer hängt von verschiedenen Faktoren ab, wie der Komplexität Ihres Vorhabens und der Verfügbarkeit von Fördermitteln. In der Regel können Sie mit 2-4 Monaten von der ersten Beratung bis zur Gründung rechnen.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Welche Fördermittel gibt es für Handwerksgründungen?
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Es gibt verschiedene Förderprogramme auf Bundes- und Landesebene, wie z.B. den Gründungszuschuss der Agentur für Arbeit, KfW-Kredite oder das ERP-Gründerkapital. Wir helfen Ihnen, die passenden Fördermittel zu finden und die Anträge zu stellen.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Brauche ich einen Businessplan?
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ja, ein professioneller Businessplan ist essenziell für die Beantragung von Fördermitteln und Krediten. Er dient auch als Leitfaden für Ihr Unternehmen. Wir erstellen mit Ihnen einen maßgeschneiderten Businessplan.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Wie viel Eigenkapital benötige ich?
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Die Höhe des benötigten Eigenkapitals hängt von Ihrem Vorhaben ab. Banken verlangen in der Regel 10-20% der Gesamtinvestition als Eigenkapital. Wir helfen Ihnen, die optimale Finanzierungsstruktur zu finden.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Bietet ihr auch Unterstützung nach der Gründung?
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ja, unsere Betreuung endet nicht mit der Gründung. Wir bieten Nachbetreuungspakete an, die Sie in den ersten Monaten oder Jahren Ihres Unternehmens unterstützen - von Marketing bis zur Personalplanung.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Kontakt</h2>
+                <div class="contact-container">
+                    <div class="contact-form">
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-Mail</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefon</label>
+                                <input type="tel" id="phone" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Nachricht</label>
+                                <textarea id="message" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Nachricht senden</button>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h4>Adresse</h4>
+                                <p>Service Berlin<br>Musterstraße 123<br>10115 Berlin</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <h4>Telefon</h4>
+                                <p>+49 (0)30 12345678</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h4>E-Mail</h4>
+                                <p>info@service-berlin.de</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-clock"></i></div>
+                            <div>
+                                <h4>Öffnungszeiten</h4>
+                                <p>Mo-Fr: 09:00 - 18:00 Uhr<br>Sa: 10:00 - 14:00 Uhr</p>
+                            </div>
+                        </div>
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i> Google Maps Placeholder
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <a href="#" class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <span class="logo-text">Service Berlin</span>
+                    </a>
+                    <p>Ihre Experten für Existenzgründungshilfen im Handwerk. Wir unterstützen Handwerksmeister/innen auf dem Weg in die Selbstständigkeit.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-xing"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Start</a></li>
+                        <li><a href="#services">Leistungen</a></li>
+                        <li><a href="#about">Über uns</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#pricing">Preise</a></li>
+                        <li><a href="#gallery">Galerie</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Businessplan-Erstellung</a></li>
+                        <li><a href="#">Finanzierungsberatung</a></li>
+                        <li><a href="#">Rechtliche Beratung</a></li>
+                        <li><a href="#">Marktanalyse</a></li>
+                        <li><a href="#">Kostenplanung</a></li>
+                        <li><a href="#">Personalplanung</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontakt</h3>
+                    <ul class="footer-links">
+                        <li><a href="#contact">Kontaktformular</a></li>
+                        <li><a href="tel:+493012345678">+49 (0)30 12345678</a></li>
+                        <li><a href="mailto:info@service-berlin.de">info@service-berlin.de</a></li>
+                        <li>Musterstraße 123, 10115 Berlin</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Service Berlin. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // Sticky Header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+
+            const backToTop = document.querySelector('.back-to-top');
+            backToTop.classList.toggle('visible', window.scrollY > 300);
+        });
+
+        // Back to top
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const currentlyActive = document.querySelector('.faq-item.active');
+                if (currentlyActive && currentlyActive !== item) {
+                    currentlyActive.classList.remove('active');
+                }
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
